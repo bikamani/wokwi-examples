@@ -52,7 +52,6 @@ client.connect()
 
 print("Connected!")
 
-prev_weather = ""
 while True:
   print("Measuring weather conditions... ", end="")
   sensor.measure() 
@@ -66,7 +65,6 @@ while True:
     print("Reporting to MQTT topic {}: {}".format(MQTT_TOPIC, message))
     client.publish(MQTT_TOPIC, message)
     led.value(1)
-    prev_weather = message
   else:
     led.value(0)
   time.sleep(0.2)
